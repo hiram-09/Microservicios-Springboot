@@ -8,7 +8,9 @@ import org.springframework.stereotype.Service;
 
 import com.formacionbdi.app.items.clientes.ProductoRestCliente;
 import com.formacionbdi.app.items.models.Item;
+import com.formacionbdi.app.items.models.ItemMongo;
 import com.formacionbdi.app.items.models.Producto;
+import com.formacionbdi.app.items.models.ProductoMongo;
 
 @Service("ServiceFeign")
 public class ServiceItemFeign implements IServiceItem {
@@ -25,6 +27,17 @@ public class ServiceItemFeign implements IServiceItem {
 	public Item findById(Long id, Integer cantidad) {
 		Producto producto = cliente.detalle(id);
 		return new Item(producto, cantidad);
+	}
+
+	@Override
+	public ItemMongo findById(String id, Integer cantidad) {
+		ProductoMongo producto = cliente.detalleMng(id);
+		return new ItemMongo(producto, cantidad);
+	}
+
+	@Override
+	public List<ItemMongo> findAllMng() {
+		return cliente.listarMng().stream().map(p -> new ItemMongo(p, 10)).collect(Collectors.toList());
 	}
 
 }
