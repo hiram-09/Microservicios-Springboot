@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import com.formacionbdi.app.items.models.Producto;
 import com.formacionbdi.app.items.models.ProductoMongo;
 
-@FeignClient(name = "servicio-productos", url="http://localhost:8080")
+@FeignClient(name = "servicio-productos")
 public interface ProductoRestCliente {
 	
 	@GetMapping("/listar")

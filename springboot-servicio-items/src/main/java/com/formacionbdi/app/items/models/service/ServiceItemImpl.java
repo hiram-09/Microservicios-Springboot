@@ -22,7 +22,8 @@ public class ServiceItemImpl implements IServiceItem {
 
 	@Override
 	public List<Item> findAll() {
-		List<Producto> productos = Arrays.asList(restTemplate.getForObject("http://localhost:8080/listar", Producto[].class));
+		System.out.println("RestTemplate");
+		List<Producto> productos = Arrays.asList(restTemplate.getForObject("http://servicio-productos/listar", Producto[].class));
 		return productos.stream().map(p -> new Item(p, 10)).collect(Collectors.toList());
 	}
 	
@@ -30,13 +31,13 @@ public class ServiceItemImpl implements IServiceItem {
 	public Item findById(Long id, Integer cantidad) {
 		HashMap<String, String> params = new HashMap<>();
 		params.put("id", id.toString());
-		Producto producto = restTemplate.getForObject("http://localhost:8080/detalle/{id}", Producto.class, params);
+		Producto producto = restTemplate.getForObject("http://servicio-productosdetalle/{id}", Producto.class, params);
 		return new Item(producto, cantidad);
 	}
 	
 	@Override
 	public List<ItemMongo> findAllMng() {
-		List<ProductoMongo> productos = Arrays.asList(restTemplate.getForObject("http://localhost:8080/listar", ProductoMongo[].class));
+		List<ProductoMongo> productos = Arrays.asList(restTemplate.getForObject("http://servicio-productos/mng/listar", ProductoMongo[].class));
 		return productos.stream().map(p -> new ItemMongo(p, 10)).collect(Collectors.toList());
 	}
 	
@@ -44,7 +45,7 @@ public class ServiceItemImpl implements IServiceItem {
 	public ItemMongo findById(String id, Integer cantidad) {
 		HashMap<String, String> params = new HashMap<>();
 		params.put("id", id.toString());
-		ProductoMongo producto = restTemplate.getForObject("http://localhost:8080/detalle/{id}", ProductoMongo.class, params);
+		ProductoMongo producto = restTemplate.getForObject("http://servicio-productos/mng/detalle/{id}", ProductoMongo.class, params);
 		return new ItemMongo(producto, cantidad);
 	}
 }

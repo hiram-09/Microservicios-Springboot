@@ -6,7 +6,14 @@ public class ProductoMongo {
 	private String nombre;
 	private String createAt;
 	private Double precio;
+	private Integer port;
 	
+	public Integer getPort() {
+		return port;
+	}
+	public void setPort(Integer port) {
+		this.port = port;
+	}
 	public String getId() {
 		return id;
 	}

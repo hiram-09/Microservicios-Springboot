@@ -1,5 +1,7 @@
 package com.formacionbdi.app.productos.model.entity;
 
+import javax.persistence.Transient;
+
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
@@ -11,6 +13,8 @@ public class ProductoMongo {
 	private String nombre;
 	private Double precio;
 	private String createAt;
+	@Transient
+	private Integer port;
 	
 	public String getId() {
 		return id;
@@ -36,4 +40,11 @@ public class ProductoMongo {
 	public void setCreateAt(String createAt) {
 		this.createAt = createAt;
 	}
+	public Integer getPort() {
+		return port;
+	}
+	public void setPort(Integer port) {
+		this.port = port;
+	}
+	
 }
