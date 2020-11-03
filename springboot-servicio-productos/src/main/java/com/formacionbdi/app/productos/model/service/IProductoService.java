@@ -12,9 +12,17 @@ public interface IProductoService {
 	
 	public Producto findById(Long id);
 	
+	public Producto save(Producto producto);
+	
+	public void deleteById(Long id);
+	
 	
 	//Metodos para MongoDB
 	public List<ProductoMongo> findAllMng();
 	
 	public ProductoMongo findByIdMng(String id);
+
+	public ProductoMongo save(ProductoMongo producto);
+	
+	public void deleteByIdMng(String id);
 }

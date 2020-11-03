@@ -40,4 +40,22 @@ public class ServiceItemFeign implements IServiceItem {
 		return cliente.listarMng().stream().map(p -> new ItemMongo(p, 10)).collect(Collectors.toList());
 	}
 
+	@Override
+	public Producto save(Producto producto) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public Producto update(Producto producto) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public void deleteById(Long id) {
+		// TODO Auto-generated method stub
+		
+	}
+
 }
